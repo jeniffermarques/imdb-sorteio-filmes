@@ -1,71 +1,74 @@
-# 🎬 Sorteio Top 250 IMDb
+# Sorteio Top 250 IMDb
 
-Um app simples de página única (HTML/CSS/JS puro, sem instalação) para sortear
-qual filme assistir dentre os 250 melhores do IMDb, conforme avaliado pelos
-eleitores regulares do site.
+Aplicação web de página única para sortear filmes entre os 250 títulos mais bem avaliados do IMDb. O projeto utiliza apenas HTML, CSS e JavaScript, sem necessidade de instalação, servidor ou dependências externas.
 
-## ✨ Funcionalidades
+## Funcionalidades
 
-- **Sortear filme**: clique no botão e o app escolhe aleatoriamente um filme
-  da lista, com efeito de "embaralhando" antes de revelar o escolhido
-- **250 filmes com título em português e original**: posição no ranking,
-  título (em português quando existe versão oficial de lançamento no Brasil),
-  título original em inglês e ano
-- **Marcar como assistido**: uma vez marcado, o filme para de entrar no
-  sorteio — assim você vai naturalmente esgotando a lista sem repetir
-- **Nota de 0,5 a 5 estrelas**: avalie cada filme assistido, com suporte a
-  meias-estrelas
-- **Últimos assistidos**: lista com os últimos filmes marcados, mostrando
-  título, ano, posição no ranking e a nota dada
-- **Contador de progresso**: quantos você já assistiu e quantos faltam
-- Tudo salvo automaticamente no seu navegador — não precisa de login nem
-  de conexão com servidor nenhum
+- **Sorteio aleatório de filmes:** seleciona um filme da lista e apresenta uma animação de embaralhamento antes do resultado.
+- **Top 250 IMDb:** exibe a posição no ranking, o título em português quando há uma versão oficial de lançamento no Brasil, o título original em inglês e o ano de lançamento.
+- **Controle de filmes assistidos:** filmes já marcados como assistidos deixam de participar dos próximos sorteios, evitando repetições.
+- **Avaliação por estrelas:** permite avaliar os filmes assistidos de 0,5 a 5 estrelas, incluindo avaliações com meia estrela.
+- **Histórico de filmes assistidos:** apresenta os filmes marcados recentemente, com título, ano, posição no ranking e avaliação.
+- **Progresso:** informa quantos filmes já foram assistidos e quantos ainda estão disponíveis para sorteio.
+- **Persistência local:** os dados são salvos automaticamente no navegador, sem necessidade de login, servidor ou conexão com banco de dados.
 
-## 🚀 Como usar
+## Como executar
 
-### Opção 1 — Só abrir localmente
-Baixe o arquivo `index.html` e abra com dois cliques no navegador. Funciona
-offline, sem precisar hospedar nada.
+### Execução local
 
-### Opção 2 — Hospedar no GitHub Pages (grátis)
-1. Crie um repositório novo no GitHub
-2. Suba este arquivo com o nome `index.html` na raiz do repositório
-3. Vá em **Settings → Pages**
-4. Em "Source", selecione a branch `main` e a pasta `/ (root)`, e salve
-5. Em 1–2 minutos o link estará disponível em
-   `https://seu-usuario.github.io/nome-do-repositorio/`
+1. Baixe o arquivo `index.html`.
+2. Abra o arquivo diretamente no navegador.
+3. O aplicativo funciona offline e não requer instalação ou hospedagem.
 
-## 💾 Como os dados são salvos
+### Publicação no GitHub Pages
 
-O app usa o `localStorage` do navegador para guardar quais filmes você já
-assistiu e as notas dadas. Isso significa:
+Para disponibilizar a aplicação online gratuitamente:
 
-- Os dados ficam salvos **naquele navegador e dispositivo específico**
-- Não sincroniza automaticamente entre celular, computador, etc.
-- Não requer servidor, banco de dados ou conta de nenhum tipo
-- Limpar o cache/dados do site no navegador apaga o progresso
+1. Crie um novo repositório no GitHub.
+2. Adicione o arquivo `index.html` à raiz do repositório.
+3. Acesse **Settings → Pages**.
+4. Em **Source**, selecione a branch `main` e a pasta `/ (root)`.
+5. Salve a configuração.
 
-Se quiser sincronizar entre dispositivos futuramente, é possível adaptar o
-armazenamento para usar um serviço como o **Firebase** (plano gratuito Spark),
-trocando as funções `loadWatched()` e `saveWatched()` do código por chamadas
-ao Firestore.
+Após a publicação, a aplicação estará disponível em um endereço no formato:
 
-## 🗑️ Limpar a lista de assistidos
+`https://seu-usuario.github.io/nome-do-repositorio/`
 
-Há um botão "Limpar lista de assistidos" no rodapé do app. Por segurança,
-ele pede duas confirmações: o primeiro clique avisa "Clique de novo para
-confirmar" (por 4 segundos) e só o segundo clique realmente apaga tudo.
+## Persistência de dados
 
-## 📝 Sobre a lista de filmes
+A aplicação utiliza o `localStorage` do navegador para armazenar os filmes assistidos e suas respectivas avaliações.
 
-A lista foi construída a partir de uma fonte que replica o ranking do IMDb
-(atualizada em agosto de 2026), já que o próprio imdb.com bloqueia acesso
-automatizado. A ordem e os títulos devem estar bem próximos do ranking atual
-do site, mas pequenas defasagens podem existir caso o IMDb tenha mudado algo
-desde então. Alguns títulos mais raros (filmes muito recentes ou sem
-distribuição oficial no Brasil) aparecem apenas com o nome original em inglês.
+Isso significa que:
 
-## 🛠️ Tecnologias
+- Os dados ficam armazenados no navegador e dispositivo utilizados.
+- O progresso não é sincronizado automaticamente entre diferentes dispositivos.
+- Não é necessário utilizar servidor, banco de dados ou conta de usuário.
+- A limpeza dos dados do site ou do navegador pode apagar o progresso armazenado.
 
-Apenas HTML, CSS e JavaScript puro — nenhuma dependência externa, framework
-ou build necessário.
+### Possível evolução
+
+Caso seja necessário sincronizar o progresso entre dispositivos, o armazenamento pode ser adaptado para utilizar um serviço externo, como o Firebase. Nesse cenário, as funções `loadWatched()` e `saveWatched()` podem ser substituídas por operações de leitura e gravação no Firestore.
+
+## Limpeza do histórico
+
+A aplicação possui a opção **Limpar lista de assistidos** no rodapé.
+
+Para evitar exclusões acidentais, a ação exige duas confirmações. No primeiro clique, é exibida uma mensagem solicitando uma nova confirmação durante quatro segundos. O segundo clique remove definitivamente os dados armazenados.
+
+## Fonte e atualização da lista
+
+A lista de filmes foi construída a partir de uma fonte que replica o ranking do IMDb, com atualização em agosto de 2026. O acesso automatizado ao ranking diretamente pelo IMDb não estava disponível no momento da construção da lista.
+
+Por esse motivo, a ordem e os títulos podem apresentar pequenas diferenças em relação ao ranking atual do site caso ocorram alterações posteriores no IMDb.
+
+Alguns filmes mais recentes ou que não possuem distribuição oficial no Brasil podem aparecer somente com o título original em inglês.
+
+## Tecnologias
+
+O projeto foi desenvolvido utilizando:
+
+- HTML
+- CSS
+- JavaScript
+
+Não são utilizados frameworks, bibliotecas externas, ferramentas de build ou dependências de terceiros.
